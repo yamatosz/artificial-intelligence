@@ -17,7 +17,7 @@ x_normalized = scaller.fit_transform(x)
 
 dimension = int(input("Escolha a dimensão para exibição dos dados: 2 ou 3: "))
 
-# Reduzindo dimensionalidade dos dados de 13 para a dimensão escolhida, melhorando a visualização 
+# Reduzindo dimensionalidade dos dados de 4 para a dimensão escolhida, melhorando a visualização 
 x_truncated = TruncatedSVD(dimension).fit_transform(x_normalized)
 
 
@@ -33,7 +33,7 @@ x = x_normalized
 centroids = k_means.cluster_centers_
 labels = k_means.labels_
 
-silhouette_svg = silhouette_score(x_normalized, k_means.predict(x_normalized))
+silhouette_svg = silhouette_score(x, k_means.predict(x))
 # Gerando grafico para visualização dos dados de acordo com a dimensão escolhida
 if dimension == 2:
         plt.scatter(x[:,0], x[:,1], s=50, c=labels)
